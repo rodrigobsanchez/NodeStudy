@@ -9,7 +9,6 @@ const router = express.Router();
 router.get('/', (req, res, next) => {
     console.log('Shopping cart --> ', adminData.products);
     const products = adminData.products;
-    // res.sendFile(path.join(rootDir, 'views', 'shop.html'));
     res.render('shop', {
         prods: products,
         pageTitle: 'Shop',
