@@ -1,13 +1,29 @@
 const http = require('http');
-const routes = require('./routes'); // will look for this file in the same folder. Creating a connection to other file.
+const bodyParser = require('body-parser');
+const path = require('path');
+const express = require('express');
 
-console.log(routes.someText);
+const app = express();
 
-const server = http.createServer(routes.handler);
+const adminRouter = require('./routes/admin');
+const shopRouter = require('./routes/shop');
 
-server.listen(3000);
 
-// npm init creates package.json into your project.
-// adding start property into package.json to start execution with npm start at terminal.
+// this middleware in only for parsing body from request and responses.
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(express.static(path.join(__dirname, 'public'))); // grant read access to a folder
 
-// installing 3rd party dependency to promptly update my changes without restarting the server. npm install nodemon --save-dev
+app.use('/admin', adminRouter);
+app.use(shopRouter);
+
+app.use((req, res, next) => {
+    res.status(404).sendFile(path.join(__dirname, 'views', '404.html'));
+});
+
+app.use('/', (req, res, next) => {
+    console.log('This always runs...');
+    next();
+}); 
+
+app.listen(3000);
+
