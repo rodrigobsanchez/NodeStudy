@@ -85,3 +85,9 @@ Installing all 3 --> npm install --save ejs pug express-handlebars@3.0
 
 ******* Module 6 Templating engines *************
 
+************ Module 7 MVC *****************
+
+
+
+************ Module 7 MVC *****************
+
