@@ -83,6 +83,12 @@ EJS <p> <%= name %> </p>, Pug(jade) p 3 #{name}, Handlebars <p> {{ name }} </p>.
 
 Installing all 3 --> npm install --save ejs pug express-handlebars@3.0
 
+EJS is the one.
+
+<% 'Scriptlet' tag, for control-flow, no output
+<%= Outputs the value into the template (HTML escaped)
+<%- Outputs the unescaped value into the template
+
 ******* Module 6 Templating engines *************
 
 ************ Module 7 MVC *****************
@@ -91,3 +97,6 @@ Installing all 3 --> npm install --save ejs pug express-handlebars@3.0
 
 ************ Module 7 MVC *****************
 
+https://as2.ftcdn.net/v2/jpg/01/12/46/75/1000_F_112467534_9jaCZZRAEMsIcICc5Az0NSX7RenIAKw9.jpg
+
+https://www.publicdomainpictures.net/pictures/340000/velka/spain-flag-and-map-country-shape-idea-design-1588674499Cq5.jpg
