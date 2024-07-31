@@ -100,3 +100,34 @@ EJS is the one.
 https://as2.ftcdn.net/v2/jpg/01/12/46/75/1000_F_112467534_9jaCZZRAEMsIcICc5Az0NSX7RenIAKw9.jpg
 
 https://www.publicdomainpictures.net/pictures/340000/velka/spain-flag-and-map-country-shape-idea-design-1588674499Cq5.jpg
+
+https://as2.ftcdn.net/jpg/07/63/70/93/220_F_763709359_yiF1NfTkHP7dhz4KvQZBxDTvoYk4ZjBq.jpg
+
+https://t3.ftcdn.net/jpg/07/67/95/62/240_F_767956245_Zrshnvm1B7qeraVeVLvNrG6R2srR6OrT.jpg
+
+
+
+*************** Module 10 databse ****************
+
+npm install --save mysql2
+
+NoSQL uses collections instead of tables. 
+Also is considered Schemaless. We don't have exactly the same fields...
+There is no JOINS (table relations) they use duplicates.
+No Schema and Relations (or very few relations).
+
+
+CREATE TABLE `node_complete`.`products` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `title` VARCHAR(255) NOT NULL,
+  `price` DOUBLE NOT NULL,
+  `description` TEXT NOT NULL,
+  `imageUrl` VARCHAR(255) NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE);
+
+  INSERT INTO `node_complete`.`products` (`title`, `price`, `description`, `imageUrl`) VALUES ('A Book', '12.99', 'asdasd', 'https://as2.ftcdn.net/v2/jpg/01/12/46/75/1000_F_112467534_9jaCZZRAEMsIcICc5Az0NSX7RenIAKw9.jpg');
+
+
+*** For this module there were only products examples using mysql. Easy examples and we could continue throughout the other services later on this module branch.
+*************** Module 10 databse ****************
