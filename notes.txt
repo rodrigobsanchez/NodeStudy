@@ -107,7 +107,7 @@ https://t3.ftcdn.net/jpg/07/67/95/62/240_F_767956245_Zrshnvm1B7qeraVeVLvNrG6R2sr
 
 
 
-*************** Module 10 databse ****************
+*************** Module 10 database ****************
 
 npm install --save mysql2
 
@@ -130,4 +130,19 @@ CREATE TABLE `node_complete`.`products` (
 
 
 *** For this module there were only products examples using mysql. Easy examples and we could continue throughout the other services later on this module branch.
-*************** Module 10 databse ****************
+*************** Module 10 database ****************
+
+
+*************** Module 11 Sequelize ****************
+
+npm install --save sequelize   ** dependant on the mysql2 that we installed last module.
+
+Sequelize = An Object-Relational Mapping Libary. Something similar to CrudRepository from Spring Java.
+
+Both module 10 and 11 uses promises for queries... using the .then().catch();
+
+With Sequelize v5, findById() (which we'll use in this course) was replaced by findByPk().
+
+Creating an association (JOINS) with Sequelize.
+
+*************** Module 11 Sequelize ****************

@@ -1,33 +1,28 @@
-const db = require('../util/database');
-const Cart = require('./cart');
+const Sequelize = require('sequelize');
+const sequelize = require('../util/database');
 
-module.exports = class Product {
-    constructor(id, title, imageUrl, description, price) {
-        this.id = id;
-        this.title = title;
-        this.imageUrl = imageUrl;
-        this.description = description;
-        this.price = price;
+// defining below the javascript object with some table creation details.
+
+const Product = sequelize.define('product', {
+    id: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true, // AUTO INCREMENT
+        allowNull: false, // NOT NULL
+        primaryKey: true
+    },
+    title: Sequelize.STRING,
+    price: {
+        type: Sequelize.DOUBLE,
+        allowNull: false,
+    },
+    imageUrl: {
+        type: Sequelize.STRING,
+        allowNull: false,
+    },
+    description: {
+        type: Sequelize.STRING,
+        allowNull: false,
     }
+});
 
-    save() {
-        // this approach helps protect against attacks of queries inside my insert query.
-      return db.execute('INSERT INTO products (title, price, imageUrl, description) VALUES (?, ?, ?, ?)',
-            [this.title, this.price, this.imageUrl, this.description]
-        );
-    }
-
-    static fetchAll() { 
-        // this is returning a promise... with the query results.
-        return db.execute('SELECT * FROM products');
-    }
-
-    static findById(id) {
-        return db.execute('SELECT * FROM products WHERE id = ?', [id]);
-    }
-
-    static deleteById(id) {
-       
-    }
-
-}
+module.exports = Product;
