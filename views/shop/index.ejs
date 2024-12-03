@@ -23,6 +23,8 @@
                         </div>
                         <div class="card__actions">
                             <!-- the {product is because all this html is inside a for loop from ejs that hold a temp variable.} -->
+                             <!-- with mongo db you have to use _id for the variable. -->
+                            <a href="/products/<%= product._id %>" class="btn">Details</a>
                             <%- include('../includes/add-to-cart.ejs', {product: product}) %> 
                         </div>
                     </article>

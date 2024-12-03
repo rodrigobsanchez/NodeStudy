@@ -106,6 +106,15 @@ https://as2.ftcdn.net/jpg/07/63/70/93/220_F_763709359_yiF1NfTkHP7dhz4KvQZBxDTvoY
 https://t3.ftcdn.net/jpg/07/67/95/62/240_F_767956245_Zrshnvm1B7qeraVeVLvNrG6R2srR6OrT.jpg
 
 
+https://images.pexels.com/photos/869258/pexels-photo-869258.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
+
+https://images.pexels.com/photos/300857/pexels-photo-300857.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
+
+https://images.pexels.com/photos/2179424/pexels-photo-2179424.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
+
+https://images.pexels.com/photos/18012386/pexels-photo-18012386/free-photo-of-silhouette-of-woman-in-costume-with-sword.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
+
+
 
 *************** Module 10 database ****************
 
@@ -146,3 +155,15 @@ With Sequelize v5, findById() (which we'll use in this course) was replaced by f
 Creating an association (JOINS) with Sequelize.
 
 *************** Module 11 Sequelize ****************
+
+
+************** Module 12 MongoDB *****************
+- Database solution/Engine.
+- It can store lots and lots of data.
+We use cloud connection from mongodb official website.
+
+npm install --save mongodb
+
+mongodb+srv://rodrigo:rodrigo@nodejslearning.8nvpy.mongodb.net/?retryWrites=true&w=majority&appName=nodeJSLearning
+
+************** Module 12 MongoDB *****************

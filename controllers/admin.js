@@ -9,20 +9,26 @@ exports.getAddProduct = (req, res, next) => {
 }
 
 exports.postAddProduct = (req, res, next) => {
-    console.log(req.body);
+    // console.log(req.body);
     const title = req.body.title;
     const imageUrl = req.body.imageUrl;
     const price = req.body.price;
-    const description = req.body.description;
+    const description = req.body.description;  
+    const userId = req.user._id;
+    const product = new Product(title, price, description, imageUrl, null, userId);
+
 
     // create an associate object. this method exist because of app.js Product.belongsTo(User, { constrains: true, onDelete: 'CASCADE' });
-    req.user.createProduct({
-        title: title,
-        price: price,
-        imageUrl: imageUrl,
-        description: description
-    }).then(result => {
-        console.log('Product has been created ' + result.title);
+    // req.user.createProduct({
+    //     title: title,
+    //     price: price,
+    //     imageUrl: imageUrl,
+    //     description: description
+
+
+    product.save()
+    .then(result => {
+        // console.log('Product has been created ' + result.title);
         res.redirect('/admin/products');
     }).catch(err => {
         console.log(err);
@@ -36,21 +42,20 @@ exports.getEditProduct = (req, res, next) => {
     }
     const prodId = req.params.productId;
 
-    req.user.getProducts({ where: { id: prodId } }) // will return array of objects.
-        .then(products => {
-            const product = products[0];
+    // req.user.getProducts({ where: { id: prodId } }) // will return array of objects.
+        Product.findById(prodId)
+            .then(product => {
+                if(!product) {
+                    res.redirect('/');
+                }
 
-            if(!product) {
-                res.redirect('/');
-            }
-
-            res.render('admin/edit-product', {
-                pageTitle: 'Edit Product',
-                path: '/admin/edit-product',
-                editing: editMode,
-                product: product
-        
-            });
+                res.render('admin/edit-product', {
+                    pageTitle: 'Edit Product',
+                    path: '/admin/edit-product',
+                    editing: editMode,
+                    product: product
+            
+                });
 
     }).catch(err => {
         console.log(err);
@@ -64,24 +69,19 @@ exports.postEditProduct = (req, res, next) => {
     const updatedImageUrl = req.body.imageUrl;
     const updatedDescription = req.body.description;
 
-    Product.findByPk(prodId).then(product => {
-        product.title = updatedTitle;
-        product.price = updatedPrice;
-        product.description = updatedDescription;
-        product.imageUrl = updatedImageUrl;
+    const product = new Product(updatedTitle, updatedPrice, updatedDescription, updatedImageUrl, prodId);
 
-        return product.save();
-    }).then(result => {
-        console.log('Product ' + result.id + ' has been updated.');
-        res.redirect('/admin/products');
-    }).catch(err => {
-        console.log(err);
+    product.save()
+        .then(result => {
+            res.redirect('/admin/products');
+        }).catch(err => {
+            console.log(err);
     });  
 }
 
 exports.getProducts = (req, res, next) => {
 
-    req.user.getProducts()
+    Product.fetchAll()
         .then(products => {
             res.render('admin/products', {
                 prods: products,
@@ -96,15 +96,8 @@ exports.getProducts = (req, res, next) => {
 
 exports.postDeleteProduct = (req, res, next) => {
     const prodId = req.body.productId;
-
-    Product.findByPk(prodId).then(product => {
-        // sequelize version for deleteById
-        return product.destroy();
-
-    }).then(result => {
-        console.log('Product ' + result.id + ' has been deleted.');
+    Product.deleteById(prodId)
+    .then(() => {
         res.redirect('/admin/products');
-    }).catch(err => {
-        console.log(err);
-    });  
+    }).catch(err => console.log(err));  
 }
